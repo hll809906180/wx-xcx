@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.threegiants.sprusermanager.business.mapper.UserMapper">
+    <resultMap id="userResult" type="cn.threegiants.sprusermanager.business.entity.UserEntity">
+        <result property="id" column="userid"  />
+        <result property="userName" column="username"  />
+        <result property="password" column="password"  />
+    </resultMap>
+
+    <select id="findUserById" resultMap="userResult" parameterType="String">
+       select * from user where userid=#{id}
+    </select>
+
+    <select id="findByUsername" resultMap="userResult" parameterType="cn.threegiants.sprusermanager.business.entity.UserEntity">
+      select * from user where username=#{userName} and password=#{password}
+    </select>
+
+</mapper>
