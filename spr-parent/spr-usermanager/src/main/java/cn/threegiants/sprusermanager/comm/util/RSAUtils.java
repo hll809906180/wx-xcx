@@ -227,10 +227,10 @@ public class RSAUtils {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		String pwd = "@BUPush@TM,8Zx~TK.sz";
+		String pwd = "UyQsM7hvCMFObeKmO9vzRA==";
 		System.out.println("密文：" + RSAUtils.encrypt("root"));
 
-		System.out.println("明文：" + RSAUtils.decrypt(RSAUtils.encrypt(pwd)));
+		System.out.println("明文：" + RSAUtils.decrypt(pwd));
 
 	}
 

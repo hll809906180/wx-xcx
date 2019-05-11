@@ -1,6 +1,6 @@
-package cn.threegiants.sprusermanager.business.mapper;
+package cn.threegiants.sprusermanager.business.text.mapper;
 
-import cn.threegiants.sprusermanager.business.entity.UserEntity;
+import cn.threegiants.sprusermanager.business.text.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

@@ -1,9 +1,9 @@
 package cn.threegiants.sprusermanager.comm.filter;
 
-import cn.threegiants.sprusermanager.business.service.UserService;
+import cn.threegiants.sprusermanager.business.text.service.UserService;
 import cn.threegiants.sprusermanager.comm.annotations.PassToken;
 import cn.threegiants.sprusermanager.comm.annotations.UserLoginToken;
-import cn.threegiants.sprusermanager.business.entity.UserEntity;
+import cn.threegiants.sprusermanager.business.text.entity.UserEntity;
 import cn.threegiants.sprusermanager.comm.util.JWTUtil;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import org.slf4j.Logger;
@@ -33,8 +33,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         String token = request.getHeader("token");// 从 http 请求头中取出 token
-        logger.info("接口鉴权开启-------------------------》");
-        logger.info("token:"+token);
         // 如果不是映射到方法直接通过
         if(!(object instanceof HandlerMethod)){
             return true;
@@ -52,6 +50,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if (method.isAnnotationPresent(UserLoginToken.class)) {
             UserLoginToken userLoginToken = method.getAnnotation(UserLoginToken.class);
             if (userLoginToken.required()) {
+                logger.info("接口鉴权开启------------------------------------》");
+                logger.info("token:"+token);
                 // 执行认证
                 if (token == null) {
                     throw new RuntimeException("无token，请重新登录");
@@ -67,11 +67,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 if (userEntity == null) {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }
+                boolean verify = JWTUtil.verify(token,userId);
+                if(verify){
+                    logger.info("接口鉴权校验通过---------------------------------》");
+                }
                 // 验证 token
-               return JWTUtil.verify(token,userId);
+                return verify;
             }
         }
-        logger.info("接口鉴权校验通过------------------------------------》");
         return true;
     }
 

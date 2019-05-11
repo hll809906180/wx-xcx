@@ -1,6 +1,6 @@
-package cn.threegiants.sprusermanager.business.service;
+package cn.threegiants.sprusermanager.business.text.service;
 
-import cn.threegiants.sprusermanager.business.entity.UserEntity;
+import cn.threegiants.sprusermanager.business.text.entity.UserEntity;
 
 public interface UserService {
     /**

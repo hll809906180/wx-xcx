@@ -30,7 +30,7 @@ public class Swagger2 {
 	}
 
 	private ApiInfo apiInfo() {// 创建API的基本信息，这些信息会在Swagger UI中进行显示
-		return new ApiInfoBuilder().title("leadeon流量平台订单服务API")// API 标题
+		return new ApiInfoBuilder().title("员工管理服务API")// API 标题
 				.description("提供超市员工管理服务RESTful APIs")// API描述
 				.contact(new Contact("李旭明", "http://www.leadeon.cn", "lixuming@leadeon.cn"))// 联系人
 				.version("2.0-SNAPSHOT")// 版本号

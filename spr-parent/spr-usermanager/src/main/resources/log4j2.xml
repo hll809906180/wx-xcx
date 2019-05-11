@@ -43,7 +43,7 @@
 	<Loggers>
 		<Logger name="org.springframework" level="WARN"/>
 
-		<logger name="cn.threegiants.sprusermanager.business.mapper" level="DEBUG"></logger>
+		<logger name="cn.threegiants.sprusermanager.business.text.mapper" level="DEBUG"></logger>
 		<logger name="org.mybatis" level="DEBUG"></logger>
 
 		<Logger name="java.sql" level="debug"/>

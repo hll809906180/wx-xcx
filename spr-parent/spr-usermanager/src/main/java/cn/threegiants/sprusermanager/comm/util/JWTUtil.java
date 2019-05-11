@@ -1,6 +1,6 @@
 package cn.threegiants.sprusermanager.comm.util;
 
-import cn.threegiants.sprusermanager.business.entity.UserEntity;
+import cn.threegiants.sprusermanager.business.text.entity.UserEntity;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;

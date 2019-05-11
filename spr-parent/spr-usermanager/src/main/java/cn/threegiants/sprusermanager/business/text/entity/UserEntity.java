@@ -1,4 +1,4 @@
-package cn.threegiants.sprusermanager.business.entity;
+package cn.threegiants.sprusermanager.business.text.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,8 +1,9 @@
-package cn.threegiants.sprusermanager.business.controller;
+package cn.threegiants.sprusermanager.business.text.controller;
 
-import cn.threegiants.sprusermanager.business.service.UserService;
+import cn.threegiants.sprusermanager.business.text.service.UserService;
 import cn.threegiants.sprusermanager.comm.annotations.UserLoginToken;
-import cn.threegiants.sprusermanager.business.entity.UserEntity;
+import cn.threegiants.sprusermanager.business.text.entity.UserEntity;
+import cn.threegiants.sprusermanager.comm.util.HttpUrlConnection;
 import cn.threegiants.sprusermanager.comm.util.JWTUtil;
 import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiOperation;
@@ -70,5 +71,23 @@ public class UserApi {
         UserEntity userEntity = (UserEntity) redisTemplate.opsForValue().get("users6");
         logger.info("缓存中的实体:" + JSONObject.toJSONString(userEntity));
         return "你已通过验证";
+    }
+
+    @RequestMapping("/wx")
+    public String  getWxCheck(String jsCode){
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=wxb5722d7befb3f5d2&secret=7f858a3a71e6827a5c4bc293b8fba754&js_code="
+                +jsCode+ "&grant_type=authorization_code";
+        String session_key = "";
+        String openid = "";
+        try{
+            String res[] = HttpUrlConnection.requestJson(url);
+            JSONObject oppidObj = JSONObject.parseObject(res[0]);
+            openid = (String) oppidObj.get("openid");
+            session_key = (String) oppidObj.get("session_key");
+            System.out.println(res[0]);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return session_key;
     }
 }

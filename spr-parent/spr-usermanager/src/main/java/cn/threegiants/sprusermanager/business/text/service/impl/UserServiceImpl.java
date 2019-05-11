@@ -1,8 +1,8 @@
-package cn.threegiants.sprusermanager.business.service.impl;
+package cn.threegiants.sprusermanager.business.text.service.impl;
 
-import cn.threegiants.sprusermanager.business.entity.UserEntity;
-import cn.threegiants.sprusermanager.business.mapper.UserMapper;
-import cn.threegiants.sprusermanager.business.service.UserService;
+import cn.threegiants.sprusermanager.business.text.entity.UserEntity;
+import cn.threegiants.sprusermanager.business.text.mapper.UserMapper;
+import cn.threegiants.sprusermanager.business.text.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
